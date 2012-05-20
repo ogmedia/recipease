@@ -1,3 +1,4 @@
+<div data-role="page">
 <?//print_r($recipe);?>
 <div id="cont">
 	<div style="display:none;" class="save_recipe_reminder">
@@ -196,3 +197,4 @@ input#title{
 	//flip this anytime something changes, to remind them to save it
 	var recipeChanged = false;
 </script>
+</div>

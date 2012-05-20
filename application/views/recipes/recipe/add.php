@@ -1,22 +1,25 @@
-<!-- start HTML -->
-<h2>Title</h2>
-<input type="text" name="title" id="title" />
 
-<h2>Ingredients</h2>
-<ul id="ingredients_list">
-</ul>
+<div data-role="content" data-theme="c" class="ui-corner-bottom ui-content ui-body-c" role="main">
+	<h1>Recipe title.</h1>
+	<input type="text" name="title" id="title" />
 
-<button id="add_ingredient">Add Ingredient</button>
+	<h2>Ingredients</h2>
+	<ul id="ingredients_list">
+	</ul>
 
-<h2>Directions</h2>
-<ul id="directions_list">
-</ul>
-<button id="add_direction">Add Direction Step</button>
+	<button id="add_ingredient">Add Ingredient</button>
 
-<br />
-<br />
-<hr />
-<button id="save_recipe">Save Recipe</button>
+	<h2>Directions</h2>
+	<ul id="directions_list">
+	</ul>
+	<button id="add_direction">Add Direction Step</button>
+
+	<br />
+
+	<button id="save_recipe" data-role="button" data-theme="b" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Save Recipe</span></span></button>       
+	<a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Cancel</span></span></a>    
+</div>
+
 <!-- end of HTML -->
 
 <script type="text/javascript">
