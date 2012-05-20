@@ -12,10 +12,10 @@
 	 	<? } ?>
 	</div>
 	<div class="recipe_changes" style="display:none;">
-		RECIPE CHANGES
+		<h3>RECIPE CHANGES</h3>
 		<? foreach($recipe['changes'] as $changed_member => $changes){?>
 			<div class="changed_details">
-				<h3><?=$changed_member?></h3>
+				<h4><?=$changed_member?></h4>
 				<? foreach($changes as $change){?>
 					<? foreach( $change as $field => $value ){ ?>
 					<span>(<?=$field;?>: <?=$value?>)</span> 
