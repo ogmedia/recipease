@@ -228,7 +228,7 @@ class Recipebuilder{
 
 		//step through each iteration of recipe
 		foreach($node_path as $recipe_struct){
-
+			$changes = array();
 			//map ingredients
 			$ingredients = $this->CI->Ingredientsmodel->getWhere( array( 'recipe_id' => $recipe_struct['id'] ) );
 
@@ -236,6 +236,8 @@ class Recipebuilder{
 				$ingredient_mapping[ $ingredient['id'] ] = $ingredient;
 				
 				if(!empty($ingredient['parent_id'])){
+
+					$changes['ingredients'][] = $ingredient;
 					unset($ingredient_mapping[ $ingredient['parent_id'] ]);
 				}
 			}
@@ -247,6 +249,7 @@ class Recipebuilder{
 				$directions_mapping[ $direction['id'] ] = $direction;
 				
 				if(!empty($direction['parent_id'])){
+					$changes['directions'][] = $direction;
 					unset($directions_mapping[ $direction['parent_id'] ]);
 				}
 			}
@@ -264,7 +267,8 @@ class Recipebuilder{
 				$this->change_log[] = array(
 					'data' => $recipe_assembly, 
 					'ingredients' => $ingredient_mapping, 
-					'directions' => $directions_mapping
+					'directions' => $directions_mapping,
+					'changes' => $changes
 				);
 			}
 
