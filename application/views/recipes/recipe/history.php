@@ -18,7 +18,7 @@
 				<h3><?=$changed_member?></h3>
 				<? foreach($changes as $change){?>
 					<? foreach( $change as $field => $value ){ ?>
-					<span class="specific_size">(<?=$field;?>: <?=$value?>)</span> 
+					<span>(<?=$field;?>: <?=$value?>)</span> 
 					<? } ?>
 				<? } ?>
 			</div>
