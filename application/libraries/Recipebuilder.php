@@ -27,22 +27,9 @@ class Recipebuilder{
 
 		foreach($all_recipes as $recipe_item ){
 			$recipe = array();
-			$recipe = $recipe_item;
+			$recipe = $this->getRecipe( $recipe_item['id'] );
 
 			//this has to be recursive :/
-			if( !empty( $recipe_item['parent_id'] ) ){
-
-				$recipe_parent = $this->CI->Recipesmodel->getWhere( array( 'id' => $recipe_item['parent_id'] ) );	
-
-				//override recipe info
-				foreach( $recipe as $field => $value ){
-					if( empty( $value ) ){
-						$recipe[$field] = $recipe_parent[$field];
-					}
-				}
-
-
-			}
 
 			$recipe_list[] =  $recipe;
 		}
@@ -174,6 +161,7 @@ class Recipebuilder{
 		return $recipe_data;
 	}
 
+  	//recursive basic recipe data, ingredients should be different method
 	public function getRecipe( $recipe_id = false ){
 		$recipe_data = $this->CI->Recipesmodel->getWhere( array( 'id' => $recipe_id ) );
 
@@ -202,10 +190,6 @@ class Recipebuilder{
 				}
 			}
 
-			//ingredient and direction data
-			//take this level field values and writes them if they exist
-			//need to check this level - ingredients
-			//need to check this level - directions
 		}
 
 		return $recipe_assembly;

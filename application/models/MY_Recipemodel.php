@@ -19,13 +19,14 @@ class MY_Recipemodel extends CI_Model{
 		}
 	}
 
-	public function getWhere( $where = array() ){
+	public function getWhere( $where = array(), $order = array(), $limit = 100 ){
 		if(empty($where)){
 			return false;
 		}
 
 		$this->db->where($where);
 		$this->db->order_by($this->order_key,$this->order_dir);
+		$this->db->limit( $limit );
 		$rec_query = $this->db->get($this->table_name);
 		if(!empty($rec_query)){
 			//ids are unique, so they will be keys
