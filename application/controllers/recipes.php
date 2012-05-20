@@ -24,7 +24,8 @@ class Recipes extends MY_Recipecontroller{
 		}
 		$this->body_view = 'recipe/view';
 
-		$recipe = $this->recipebuilder->getFullRecipe( $recipe_id );
+		//$recipe = $this->recipebuilder->getFullRecipe( $recipe_id );
+		$recipe = $this->recipebuilder->getDetailedRecipe( $recipe_id );
 
 		$this->body_view_data = array( 'recipe' => $recipe );
 
@@ -58,7 +59,7 @@ class Recipes extends MY_Recipecontroller{
 			die('no recipe id');
 		}
 
-		$recipe = $this->recipebuilder->getRecipe( $recipe_id );
+		$recipe = $this->recipebuilder->getDetailedRecipe( $recipe_id );
 		print_r($recipe);
 	}
 
