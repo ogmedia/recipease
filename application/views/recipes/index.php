@@ -12,7 +12,7 @@
 			<ol id="recipe_list" data-role="listview" data-inset="true" data-filter="true">
 				<?foreach($recipes as $recipe){?>
 					<li id="<?=$recipe['id']?>" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c">
-						<a href="/recipes/view/<?=$recipe['id']?>"><?=$recipe['title']?>
+						<a href="/recipes/view/<?=$recipe['id']?>" data-transition="slide"><?=$recipe['title']?>
 							<p class="ui-li-aside ui-li-desc"><strong><?=date( 'M j, Y g:ia',strtotime($recipe['created']) );?></strong></p>
 						</a>
 					</li>

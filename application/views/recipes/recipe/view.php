@@ -1,103 +1,85 @@
+
 <div data-role="page">
-<?//print_r($recipe);?>
-<div id="cont">
-	<div style="display:none;" class="save_recipe_reminder">
-		This recipe has been changed, don't forget to save it when you're done.
-		<button class="save_recipe">Save</button>
-	</div>
 
-	<h2><?=$recipe['data']['title']?></h2>
+	<div data-role="header">
+		<a href="javascript:;" data-icon="delete" data-rel="back" class="ui-btn-left ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-a" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a">
+			<span class="ui-btn-inner ui-btn-corner-all">
+				<span class="ui-btn-text">Back</span>
+				<span class="ui-icon ui-icon-back ui-icon-shadow">&nbsp;</span>
+			</span>
+		</a>
+		<h1>Recipe: <?=$recipe['data']['title']?></h1>
+	</div><!-- /header -->
 
-	<div>
-	<? if( !empty( $recipe[ 'ingredients' ] ) ){ ?>
-	<ul id="ingredients_list">
-	<?foreach( $recipe[ 'ingredients' ] as $ingred ){ ?>
-		<li id="ingredient_<?=$ingred['id']?>">
-			<div class="display">
-				<span class="amount"><?=$ingred['amount']?></span>
-				<span class="unit"><?=$ingred['unit']?></span>
-				<span class="item"><?=$ingred['item']?></span>
-				<span class="note"><?=$ingred['note']?></span>
-				<span>
-					[ <a href="javascript:;" id="edit_ingredient_<?=$ingred['id']?>">edit</a> ]
-				</span>
-			</div>
-			<div class="edit" style="display:none">
-				<input placeholder="amount" type="text" name="ingredient_amount_<?=$ingred['id']?>" id="ingredient_amount_<?=$ingred['id']?>" value="<?=$ingred['amount']?>" />
-				<input placeholder="unit" type="text" name="ingredient_unit_<?=$ingred['id']?>" id="ingredient_unit_<?=$ingred['id']?>" value="<?=$ingred['unit']?>" />
-				<input placeholder="ingredient (required)" type="text" name="ingredient_item_<?=$ingred['id']?>" id="ingredient_item_<?=$ingred['id']?>" value="<?=$ingred['item']?>" />
-				<button id="update_ingredient_<?=$ingred['id']?>">Close</button>
-			</div>
-		</li>
-	<? } ?>
-	</ul>
-	<? } ?>
-	</div>
+	<div data-role="content">	
+		<?//print_r($recipe);?>
+		<div style="display:none;" class="save_recipe_reminder">
+			This recipe has been changed, don't forget to save it when you're done.
+			<button class="save_recipe">Save</button>
+		</div>
 
-	<hr />
+		<h1><?=$recipe['data']['title']?></h1>
 
-	<div style="display:none;" class="save_recipe_reminder">
-		This recipe has been changed, don't forget to save it when you're done.
-		<button class="save_recipe">Save</button>
-	</div>
-
-	<div>
-		<? if( !empty( $recipe[ 'directions' ] ) ){ ?>
-		<ul id="directions_list">
-			<? foreach( $recipe['directions'] as $direct ){ ?>
-			<li id="direction_<?=$direct['id']?>">
+		<div>
+		<? if( !empty( $recipe[ 'ingredients' ] ) ){ ?>
+		<ul id="ingredients_list">
+		<?foreach( $recipe[ 'ingredients' ] as $ingred ){ ?>
+			<li id="ingredient_<?=$ingred['id']?>">
 				<div class="display">
-					<span class="direction"><?=$direct['direction']?></span>
-					<span>[ <a href="javascript:;" id="edit_direction_<?=$direct['id']?>">edit</a> ]</span>
+					<span class="amount"><?=$ingred['amount']?></span>
+					<span class="unit"><?=$ingred['unit']?></span>
+					<span class="item"><?=$ingred['item']?></span>
+					<span class="note"><?=$ingred['note']?></span>
+					<span>
+						[ <a href="javascript:;" id="edit_ingredient_<?=$ingred['id']?>">edit</a> ]
+					</span>
 				</div>
-				<div class="edit" style="display:none;">
-					<textarea id="direction_step_<?=$direct['id']?>"><?=$direct['direction']?></textarea>
-					<button id="update_direction_<?=$direct['id']?>">Close</button>
+				<div class="edit" style="display:none">
+					<input placeholder="amount" type="text" name="ingredient_amount_<?=$ingred['id']?>" id="ingredient_amount_<?=$ingred['id']?>" value="<?=$ingred['amount']?>" />
+					<input placeholder="unit" type="text" name="ingredient_unit_<?=$ingred['id']?>" id="ingredient_unit_<?=$ingred['id']?>" value="<?=$ingred['unit']?>" />
+					<input placeholder="ingredient (required)" type="text" name="ingredient_item_<?=$ingred['id']?>" id="ingredient_item_<?=$ingred['id']?>" value="<?=$ingred['item']?>" />
+					<button id="update_ingredient_<?=$ingred['id']?>">Close</button>
 				</div>
 			</li>
-			<? } ?>
+		<? } ?>
 		</ul>
 		<? } ?>
-	</div>
-</div>
+		</div>
 
+		<hr />
+
+		<div style="display:none;" class="save_recipe_reminder">
+			This recipe has been changed, don't forget to save it when you're done.
+			<button class="save_recipe">Save</button>
+		</div>
+
+		<div>
+			<? if( !empty( $recipe[ 'directions' ] ) ){ ?>
+			<ul id="directions_list">
+				<? foreach( $recipe['directions'] as $direct ){ ?>
+				<li id="direction_<?=$direct['id']?>">
+					<div class="display">
+						<span class="direction"><?=$direct['direction']?></span>
+						<span>[ <a href="javascript:;" id="edit_direction_<?=$direct['id']?>">edit</a> ]</span>
+					</div>
+					<div class="edit" style="display:none;">
+						<textarea id="direction_step_<?=$direct['id']?>"><?=$direct['direction']?></textarea>
+						<button id="update_direction_<?=$direct['id']?>">Close</button>
+					</div>
+				</li>
+				<? } ?>
+			</ul>
+			<? } ?>
+		</div>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-theme="a" data-position="fixed" class="ui-footer ui-bar-a ui-footer-fixed slideup" role="contentinfo">
+		<h1 class="ui-title" role="heading" aria-level="1">Footer Stuffs</h1>
+	</div>
+
+</div><!-- /page -->
 <!-- end of HTML -->
 
-<style type="text/css">
-#cont{
-	padding:20px;
-	float:left;
-}
-#directions_list{
-	list-style-type:none;
-	margin:0 0 0 0;
-	padding:0 0 0 0;
-}
-#directions_list li{
-	margin-top:20px;
-}
-input#title{
-	width:300px;
-	height:30px;
-}
-#ingredients_list input{
-	height:30px;
-}
-#ingredients_list input.amount{
-	width:70px;
-}
-#ingredients_list input.unit{
-	width:70px;
-}
-#directions_list textarea{
-	width:400px;
-	height:50px;
-}
-.save_recipe_reminder{
-	border:solid 5px #ff0;
-	padding:20px;
-}
-</style>
 
 
 <!-- start JS -->
@@ -197,4 +179,3 @@ input#title{
 	//flip this anytime something changes, to remind them to save it
 	var recipeChanged = false;
 </script>
-</div>

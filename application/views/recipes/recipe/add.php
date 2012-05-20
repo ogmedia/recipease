@@ -103,24 +103,3 @@ var recipeObj = {
 	serves:''
 };
 </script>
-
-<style type="text/css">
-input#title{
-	width:300px;
-	height:30px;
-}
-#ingredients_list input{
-	width:200px;
-	height:30px;
-}
-#ingredients_list input.amount{
-	width:70px;
-}
-#ingredients_list input.unit{
-	width:70px;
-}
-#directions_list textarea{
-	width:400px;
-	height:50px;
-}
-</style>
