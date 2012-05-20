@@ -261,9 +261,9 @@ class Recipebuilder{
 
 			//if history tracking flag is on
 			if( !empty( $change_log ) ){
-				$change_log[] = array(
+				$this->change_log[] = array(
 					'data' => $recipe_assembly, 
-					'ingredients' => $ingredients_mapping, 
+					'ingredients' => $ingredient_mapping, 
 					'directions' => $directions_mapping
 				);
 			}

@@ -33,6 +33,27 @@ class Recipes extends MY_Recipecontroller{
 
 	}
 
+	public function history( $recipe_id = false, $direction = 'desc' ){
+		if( empty( $recipe_id ) ){
+			die('no recipe id');
+		}
+
+		$recipe = $this->recipebuilder->getDetailedRecipe( $recipe_id, true );
+
+		$recipe_history = $this->recipebuilder->change_log;
+		
+		if( $direction != 'asc' ){
+			krsort($recipe_history);
+		}
+
+		$this->body_view = 'recipe/history';
+
+		$this->body_view_data = array( 'recipe_history' => $recipe_history );
+		
+		$this->runViews();
+
+	}
+
 	public function add(){
 		$this->body_view = 'recipe/add';
 
@@ -59,8 +80,11 @@ class Recipes extends MY_Recipecontroller{
 			die('no recipe id');
 		}
 
-		$recipe = $this->recipebuilder->getDetailedRecipe( $recipe_id );
-		print_r($recipe);
+		$recipe = $this->recipebuilder->getDetailedRecipe( $recipe_id, true );
+		//print_r($recipe);
+		$recipe_history = $this->recipebuilder->change_log;
+		echo '<br />RECIPE HISTORY<br />';
+		print_r($recipe_history);
 	}
 
 	public function addRecipeUpdate(){
