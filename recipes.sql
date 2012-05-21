@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 20, 2012 at 01:23 PM
+-- Generation Time: May 20, 2012 at 05:04 PM
 -- Server version: 5.5.22-0ubuntu1
 -- PHP Version: 5.3.10-1ubuntu3.1
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `ingredients` (
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `recipe_id` (`recipe_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `ingredients`
@@ -129,7 +129,9 @@ INSERT INTO `ingredients` (`id`, `recipe_id`, `amount`, `unit`, `item`, `note`, 
 (38, 9, '1', 'jar', 'pesto', '', 1, 0, '2012-05-13 18:38:14'),
 (39, 10, '1', 'stick', 'butter', '', 11, 0, '2012-05-13 19:33:41'),
 (40, 11, '1', 'stick', 'butter', '', 11, 0, '2012-05-19 19:49:07'),
-(41, 12, '1', '', 'jarred pesto', '', 1, 0, '2012-05-20 13:06:00');
+(41, 12, '1', '', 'jarred pesto', '', 1, 0, '2012-05-20 13:06:00'),
+(42, 13, '2', 'cans', 'murphy''s stout', '', 35, 0, '2012-05-20 14:05:51'),
+(43, 14, '3', 'cans', 'murphy''s stout', '', 42, 0, '2012-05-20 16:53:39');
 
 -- --------------------------------------------------------
 
@@ -165,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `recipes` (
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`,`title`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `recipes`
@@ -177,7 +179,9 @@ INSERT INTO `recipes` (`id`, `user_id`, `title`, `thumb`, `origin`, `serves`, `p
 (9, 0, '', '', '', '', 2, '', '2012-05-13 18:38:14'),
 (10, 0, '', '', '', '', 9, '', '2012-05-13 19:33:41'),
 (11, 0, '', '', '', '', 9, '', '2012-05-19 19:49:07'),
-(12, 0, '', '', '', '', 2, '', '2012-05-20 13:05:59');
+(12, 0, '', '', '', '', 2, '', '2012-05-20 13:05:59'),
+(13, 0, '', '', '', '', 7, '', '2012-05-20 14:05:51'),
+(14, 0, '', '', '', '', 13, '', '2012-05-20 16:53:39');
 
 -- --------------------------------------------------------
 
