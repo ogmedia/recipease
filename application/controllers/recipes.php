@@ -135,4 +135,22 @@ class Recipes extends MY_Recipecontroller{
 		echo json_encode( $output );
 		exit;
 	}
+
+	//returns json recipe object
+	public function getRecipeJSON( $recipe_id = false){
+		//cache this
+		if( empty( $recipe_id ) ){
+			die( json_encode( array( 'response' => 'invalid parameters' ) ) );
+		}
+
+		$recipe = $this->recipebuilder->getDetailedRecipe( $recipe_id );
+
+		$output = array();
+		$output['recipe'] = $recipe;
+		$output['status'] = 1;
+		$output['message'] = 'retrieved recipe data';
+
+		echo json_encode( $output );
+		exit;
+	}
 }
