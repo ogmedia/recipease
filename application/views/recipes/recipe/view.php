@@ -87,23 +87,29 @@
 
 	//handler for editing ingredients
 	$('a[id^=edit_ingredient_]').click( function( e ){
+		e.preventDefault();
 		var ingId = $( this ).attr( 'id' ).replace( 'edit_ingredient_','' );
 		swapIngredientEdits( ingId );
 	});
 
 	//handler for editing directions
 	$('a[id^=edit_direction_]').click( function( e ){
+		e.preventDefault();
 		var dirId = $( this ).attr('id').replace( 'edit_direction_','' );
 		swapDirectionEdits( dirId );
 	});
 
 	$('button[id^=update_ingredient_]').click(function(e){
+		e.preventDefault();
+
 		var ingId = $( this ).attr( 'id' ).replace( 'update_ingredient_','' );
 		updateIngredientObj( ingId );
 		swapIngredientEdits( ingId );
 	});
 
 	$('button[id^=update_direction_]').click(function(e){
+		e.preventDefault();
+
 		var dirId = $( this ).attr('id').replace( 'update_direction_','' );
 		updateDirectionObj( dirId );
 		swapDirectionEdits( dirId );
