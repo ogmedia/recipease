@@ -31,7 +31,7 @@
 					<span class="item"><?=$ingred['item']?></span>
 					<span class="note"><?=$ingred['note']?></span>
 					<span>
-						[ <a href="javascript:;" id="edit_ingredient_<?=$ingred['id']?>" data-role="button" data-inline="true" data-rel="dialog" data-transition="pop" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="b" class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-up-b">edit</a> ]
+						[ <a href="javascript:;" id="edit_ingredient_<?=$ingred['id']?>" data-role="button" data-inline="true" data-rel="dialog" data-mini="true" data-transition="pop" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="b" class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-up-b">edit</a> ]
 					</span>
 				</div>
 				<div class="edit" style="display:none">

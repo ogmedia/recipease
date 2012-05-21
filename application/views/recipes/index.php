@@ -7,7 +7,7 @@
 	<div data-role="content">	
 		<div class="ui-body ui-body-b">
 			<h1>Your receipes</h1>
-			<a href="/recipes/add" data-role="button" data-inline="true" data-rel="dialog" data-transition="pop" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="b" class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Add a new recipe.</span></span></a>
+			<a href="/recipes/add" data-role="button" data-inline="true" data-mini="true" data-rel="dialog" data-transition="pop" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="b" class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Add a new recipe.</span></span></a>
 			<br><br>
 			<ol id="recipe_list" data-role="listview" data-inset="true" data-filter="true">
 				<?foreach($recipes as $recipe){?>
