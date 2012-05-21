@@ -84,7 +84,6 @@ $(function(){
 			console.log(resObj);
 
 			if(resObj.status == 1){
-				alert('added!');
 				window.location.href = '/recipes';
 			}else{
 				alert('error');
