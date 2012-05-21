@@ -19,7 +19,6 @@
 		</div>
 
 		<h1><?=$recipe['data']['title']?></h1>
-
 		<div>
 		<? if( !empty( $recipe[ 'ingredients' ] ) ){ ?>
 		<ul id="ingredients_list">
@@ -71,6 +70,9 @@
 			</ul>
 			<? } ?>
 		</div>
+
+		<h4><a href="/recipes/history/<?=$recipe['data']['id'];?>">view history</a></h4>
+
 	</div><!-- /content -->
 
 	<div data-role="footer" data-theme="a" data-position="fixed" class="ui-footer ui-bar-a ui-footer-fixed slideup" role="contentinfo">
