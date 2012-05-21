@@ -2,15 +2,16 @@
 class MY_Recipemodel extends CI_Model{
 	protected $table_name = '';
 	protected $order_key = 'created';
-	protected $order_dir = 'ASC';
+	protected $order_dir = 'DESC';
 
 	public function __construct(){
 		parent::__construct();
 	}
 
-	public function getAll(){
+	public function getAll( $order = array(), $limit = 100 ){
 		$this->db->select('*');
 		$this->db->order_by($this->order_key,$this->order_dir);
+		$this->db->limit($limit);
 		$rec_query = $this->db->get($this->table_name);
 		if(!empty($rec_query)){
 			return $rec_query->result('array');
