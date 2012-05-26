@@ -31,12 +31,13 @@
 
 $(function(){
 	$('div[id^=recipe_rating_]').each(function(){
-		console.log( $(this) );
 		var currentId = $(this).attr('id').replace('recipe_rating_','');
-		$(this).raty({
-			score:recipeList[currentId].rating
-			//'readOnly':true
-		});  
+		if(currentId > 0 && currentId != undefined && currentId != null){
+			$(this).raty({
+				score:recipeList[currentId].rating,
+				readOnly:true
+			});  
+		}
 	});
 });
 
