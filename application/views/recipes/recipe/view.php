@@ -20,7 +20,7 @@
 
 		<h1><?=$recipe['data']['title']?></h1>
 		<div>
-		<div id="rating"></div>
+		<div id="rating_<?=$recipe['data']['id']?>"></div> Rating: <?=$recipe['rating'];?>
 		<? if( !empty( $recipe[ 'ingredients' ] ) ){ ?>
 		<ul id="ingredients_list">
 		<?foreach( $recipe[ 'ingredients' ] as $ingred ){ ?>
@@ -208,7 +208,10 @@
 		}
 	}
 
-	$('#rating').raty({
+$(function(){
+
+	//needs to REBIND or something, getting lost after click
+	$('#rating_<?=$recipe['data']['id']?>').raty({
 		path:'/img',			//image path
 		half:true,				//enable half stars
 		score:recipeObj.rating,	//inital rating
@@ -217,4 +220,7 @@
     		rateTheRecipe( clientRating );
   		}
 	});
+
+});
+
 </script>
