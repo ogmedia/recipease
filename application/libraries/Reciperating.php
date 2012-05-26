@@ -29,14 +29,14 @@ class RecipeRating{
 	}
 
 	public function getRating( $recipe_id = false ){
-		if(empty($recipe_id)){
-			return 0;
+		if( empty( $recipe_id ) ){
+			return "0";
 		}
 
 		$ratings = $this->CI->Ratingsmodel->getWhere( array( 'recipe_id' => $recipe_id ) );
 		
 		if( empty( $ratings ) ){
-			return 0;
+			return "0";
 		}
 
 		$running_total = 0;
