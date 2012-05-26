@@ -3,15 +3,20 @@ class MY_Recipemodel extends CI_Model{
 	protected $table_name = '';
 	protected $order_key = 'created';
 	protected $order_dir = 'DESC';
+	protected $limit = 100000;
 
 	public function __construct(){
 		parent::__construct();
 	}
 
-	public function getAll( $order = array(), $limit = 100 ){
+	public function getAll( $order = array(), $limit = false){
+		if(!empty($limit)){
+			$this->limit = $limit;
+		}
+		
 		$this->db->select('*');
 		$this->db->order_by($this->order_key,$this->order_dir);
-		$this->db->limit($limit);
+		$this->db->limit($this->limit);
 		$rec_query = $this->db->get($this->table_name);
 		if(!empty($rec_query)){
 			return $rec_query->result('array');
@@ -20,14 +25,18 @@ class MY_Recipemodel extends CI_Model{
 		}
 	}
 
-	public function getWhere( $where = array(), $order = array(), $limit = 100 ){
+	public function getWhere( $where = array(), $order = array(), $limit = false ){
 		if(empty($where)){
 			return false;
 		}
 
+		if(!empty($limit)){
+			$this->limit = $limit;
+		}
+
 		$this->db->where($where);
 		$this->db->order_by($this->order_key,$this->order_dir);
-		$this->db->limit( $limit );
+		$this->db->limit( $this->limit );
 		$rec_query = $this->db->get($this->table_name);
 		if(!empty($rec_query)){
 			//ids are unique, so they will be keys

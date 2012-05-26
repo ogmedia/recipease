@@ -6,6 +6,7 @@ class Recipes extends MY_Recipecontroller{
 
 		$this->load->model('Recipesmodel');
 		$this->load->library('Recipebuilder');
+		$this->load->library('Reciperating');
 	}
 
 	public function index( $recipe_id = false ){
@@ -133,6 +134,14 @@ class Recipes extends MY_Recipecontroller{
 		$output['message'] = 'Added Recipe!';
 
 		echo json_encode( $output );
+		exit;
+	}
+
+	//rate the recipe via ajax
+	public function rateRecipe(){
+		$rating = $this->input->post('rating');
+		$response = $this->reciperating->addRecipe($rating);
+		echo json_encode( $response );
 		exit;
 	}
 
