@@ -47,7 +47,7 @@ class RecipeRating{
 		}
 
 		$average_rating = $running_total / $total_ratings;
-		return $average_rating;
+		return round($average_rating,2);
 
 	}
 

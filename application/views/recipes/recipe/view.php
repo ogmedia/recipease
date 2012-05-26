@@ -197,18 +197,18 @@
 
 	function rateTheRecipe( ratingNum ){
 		if( ratingNum >= 0 && ratingNum != undefined && ratingNum != null ){
+
 			ratingObj.rating = ratingNum;
 			$.post('/recipes/rateRecipe',{rating:ratingObj},function(res){
 				console.log( 'successful response' );
 				console.log( res );
 			}
 			,'json');
+
 		}else{
 			console.log('bad rating data');
 		}
 	}
-
-$(function(){
 
 	//needs to REBIND or something, getting lost after click
 	$('#rating_<?=$recipe['data']['id']?>').raty({
@@ -218,9 +218,15 @@ $(function(){
 		click: function() {
     		var clientRating = $(this).find('input[name=score]').val();
     		rateTheRecipe( clientRating );
+    		$(this).raty('readOnly', true);
+
+    		//not sure if we need it explicit, but lets try anyways 
+    		var idRef = $(this).attr('id');
+    		var successString = '<span class="rating_thanks">Thanks for rating!</span>';
+    		console.log(successString);
+    		$( successString ).insertAfter( '#' + idRef );
   		}
 	});
 
-});
 
 </script>
