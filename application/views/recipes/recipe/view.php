@@ -20,7 +20,8 @@
 
 		<h1><?=$recipe['data']['title']?></h1>
 		<div>
-		<div id="rating_<?=$recipe['data']['id']?>"></div> Rating: <?=$recipe['rating'];?>
+		<div id="rating_<?=$recipe['data']['id']?>"></div> 
+		Rating: <span id="recipe_rating"><?=$recipe['rating'];?></span>
 		<? if( !empty( $recipe[ 'ingredients' ] ) ){ ?>
 		<ul id="ingredients_list">
 		<?foreach( $recipe[ 'ingredients' ] as $ingred ){ ?>
@@ -202,12 +203,19 @@
 			$.post('/recipes/rateRecipe',{rating:ratingObj},function(res){
 				console.log( 'successful response' );
 				console.log( res );
+
+				updateRecipeRating( res.new_rating );
 			}
 			,'json');
 
 		}else{
 			console.log('bad rating data');
 		}
+	}
+
+	function updateRecipeRating( newRating ){
+		console.log(newRating);
+		$('#recipe_rating').html( newRating );
 	}
 
 	//needs to REBIND or something, getting lost after click
@@ -223,7 +231,6 @@
     		//not sure if we need it explicit, but lets try anyways 
     		var idRef = $(this).attr('id');
     		var successString = '<span class="rating_thanks">Thanks for rating!</span>';
-    		console.log(successString);
     		$( successString ).insertAfter( '#' + idRef );
   		}
 	});

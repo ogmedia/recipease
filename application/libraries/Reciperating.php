@@ -21,6 +21,7 @@ class RecipeRating{
 
 		if( !empty( $new_rating ) ){
 			$rating_data['id'] = $new_rating;
+			$rating_data['new_rating'] = $this->getRating( $rating_data['recipe_id'] );
 			return $rating_data;
 		}else{
 			return false;
