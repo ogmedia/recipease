@@ -20,6 +20,7 @@
 
 		<h1><?=$recipe['data']['title']?></h1>
 		<div>
+		<div id="rating"></div>
 		<? if( !empty( $recipe[ 'ingredients' ] ) ){ ?>
 		<ul id="ingredients_list">
 		<?foreach( $recipe[ 'ingredients' ] as $ingred ){ ?>
@@ -186,4 +187,34 @@
 
 	//flip this anytime something changes, to remind them to save it
 	var recipeChanged = false;
+
+	//this is for the rating, i'd like to make this a module in the future
+	//
+	var ratingObj = {
+		recipe_id:recipeObj.data.id,
+		rating:'0',
+	};
+
+	function rateTheRecipe( ratingNum ){
+		if( ratingNum >= 0 && ratingNum != undefined && ratingNum != null ){
+			ratingObj.rating = ratingNum;
+			$.post('/recipes/rateRecipe',{rating:ratingObj},function(res){
+				console.log( 'successful response' );
+				console.log( res );
+			}
+			,'json');
+		}else{
+			console.log('bad rating data');
+		}
+	}
+
+	$('#rating').raty({
+		path:'/img',			//image path
+		half:true,				//enable half stars
+		score:recipeObj.rating,	//inital rating
+		click: function() {
+    		var clientRating = $(this).find('input[name=score]').val();
+    		rateTheRecipe( clientRating );
+  		}
+	});
 </script>

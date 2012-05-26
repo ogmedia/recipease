@@ -28,6 +28,9 @@ class Recipes extends MY_Recipecontroller{
 		//$recipe = $this->recipebuilder->getFullRecipe( $recipe_id );
 		$recipe = $this->recipebuilder->getDetailedRecipe( $recipe_id );
 
+		$rating = $this->reciperating->getRating( $recipe_id );
+		$recipe['rating'] = $rating;
+
 		$this->body_view_data = array( 'recipe' => $recipe );
 
 		$this->runViews();
@@ -140,7 +143,8 @@ class Recipes extends MY_Recipecontroller{
 	//rate the recipe via ajax
 	public function rateRecipe(){
 		$rating = $this->input->post('rating');
-		$response = $this->reciperating->addRecipe($rating);
+
+		$response = $this->reciperating->addRating( $rating );
 		echo json_encode( $response );
 		exit;
 	}
@@ -153,6 +157,9 @@ class Recipes extends MY_Recipecontroller{
 		}
 
 		$recipe = $this->recipebuilder->getDetailedRecipe( $recipe_id );
+		
+		$rating = $this->reciperating->getRating( $recipe_id );
+		$recipe['rating'] = $rating;
 
 		$output = array();
 		$output['recipe'] = $recipe;
