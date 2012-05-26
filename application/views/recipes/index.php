@@ -14,6 +14,7 @@
 					<li id="<?=$recipe['id']?>" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c">
 						<a href="/recipes/view/<?=$recipe['id']?>" data-transition="slide"><?=$recipe['title']?>
 							<p class="ui-li-aside ui-li-desc"><strong><?=date( 'M j, Y g:ia',strtotime($recipe['created']) );?></strong></p>
+							<div id="recipe_rating_<?=$recipe['id']?>"></div>
 						</a>
 					</li>
 				<?}?>
@@ -26,3 +27,19 @@
 	</div>
 
 </div><!-- /page -->
+<script type="text/javascript">
+
+$(function(){
+	$('div[id^=recipe_rating_]').each(function(){
+		console.log( $(this) );
+		var currentId = $(this).attr('id').replace('recipe_rating_','');
+		$(this).raty({
+			score:recipeList[currentId].rating
+			//'readOnly':true
+		});  
+	});
+});
+
+var recipeList = <?=json_encode($recipes);?>;
+
+</script>

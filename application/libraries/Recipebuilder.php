@@ -17,6 +17,7 @@ class Recipebuilder{
 		$this->CI->load->model('Directionsmodel');
 		$this->CI->load->model('Ingredientsmodel');
 		$this->CI->load->model('Recipesmodel');
+		$this->CI->load->library('Reciperating');
 
 		if( !empty( $params['recipe_id'] ) ){
 			$this->recipe_id = $params[ 'recipe_id' ];
@@ -31,10 +32,12 @@ class Recipebuilder{
 		foreach($all_recipes as $recipe_item ){
 			$recipe = array();
 			$recipe = $this->getRecipe( $recipe_item['id'] );
-
+			
+			$rating = $this->CI->reciperating->getRating( $recipe_item['id'] );
+			$recipe['rating'] = $rating;
 			//this has to be recursive :/
 
-			$recipe_list[] =  $recipe;
+			$recipe_list[ $recipe_item['id'] ] = $recipe;
 		}
 
 		return $recipe_list;
